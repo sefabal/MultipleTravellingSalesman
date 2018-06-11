@@ -128,9 +128,11 @@ public class MoveOperations {
 
         int randomKeyForSecondDepot = depotCities.get((int) (Math.random() * (copyNodes.size())));
 
-        while(randomKeyForFirstDepot == randomKeyForSecondDepot )
-            randomKeyForFirstDepot = depotCities.get((int) (Math.random() * (copyNodes.size())));
-
+        if(depotCities.size() > 1) {
+            while (randomKeyForFirstDepot == randomKeyForSecondDepot)
+                randomKeyForFirstDepot = depotCities.get((int) (Math.random() * (copyNodes.size())));
+        } else
+            return;
         int FirstRandomRouteIndex = ((int) (Math.random() * depots.get(randomKeyForFirstDepot).size()));
 
         int SecondRandomRouteIndex = ((int) (Math.random() * depots.get(randomKeyForSecondDepot).size()));
@@ -238,6 +240,7 @@ public class MoveOperations {
         ArrayList<Integer> depotCities = new ArrayList<>();
 
         copyNodes.keySet().iterator().forEachRemaining(depotCities::add);
+
 
         int randomKeyForFirstDepot = depotCities.get((int) (Math.random() * (copyNodes.size())));
         int randomKeyForSecondDepot = depotCities.get((int) (Math.random() * (copyNodes.size())));
